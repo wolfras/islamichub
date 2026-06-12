@@ -39,10 +39,9 @@ const upload = multer({
 });
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/islamic-hub')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/islamic-hub')
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log('MongoDB Error:', err.message));
-
 // Book Schema
 const bookSchema = new mongoose.Schema({
   title: String,
